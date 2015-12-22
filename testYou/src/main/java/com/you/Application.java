@@ -35,9 +35,7 @@ public class Application {
 
 	@Bean(destroyMethod = "close")
 	public DataSource dataSource() {
-
 		TomcatPoolDataSourceProperties config = tomcatPoolDataSourceProperties;
-
 		this.pool = new org.apache.tomcat.jdbc.pool.DataSource();
 		this.pool.setDriverClassName(config.getDriverClassName());
 		this.pool.setUrl(config.getUrl());
@@ -66,15 +64,11 @@ public class Application {
 
 	@Bean
 	public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
-
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource());
-
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-
 		sqlSessionFactoryBean.setMapperLocations(resolver
 				.getResources("classpath:/com/you/repository/mapper/*.xml"));
-
 		return sqlSessionFactoryBean.getObject();
 	}
 
@@ -82,7 +76,7 @@ public class Application {
 	public PlatformTransactionManager transactionManager() {
 		return new DataSourceTransactionManager(dataSource());
 	}
-
+	
 
 	public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
