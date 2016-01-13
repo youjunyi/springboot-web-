@@ -40,13 +40,23 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.you.entity.User;
 import com.you.repository.entity.SsTask;
 import com.you.service.SsTaskService;
+import com.you.service.SsUserService;
 @Controller
 public class SampleController {
 
 	@Autowired
 	private SsTaskService ssTaskService;
+	@Autowired
+	private SsUserService ssUserService;
+	@RequestMapping("/test")
+	public String home3(){
+		List<User> userlist = ssUserService.findAll();		
+		return null;		
+	}
+	
 	 @RequestMapping("/")
 	  String home() throws ParseException, IOException {
          ObjectMapper mapper = new ObjectMapper();
