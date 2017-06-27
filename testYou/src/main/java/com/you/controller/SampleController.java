@@ -54,7 +54,9 @@ public class SampleController {
 	@RequestMapping("/test")
 	public String home3(){
 		List<User> userlist = ssUserService.findAll();		
-		return null;		
+		System.out.println();
+		System.out.println();
+		return null;
 	}
 	
 	 @RequestMapping("/")
